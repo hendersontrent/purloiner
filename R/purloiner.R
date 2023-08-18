@@ -14,5 +14,5 @@
 #' @importFrom tsibble as_tsibble
 #' @importFrom fabletools features feature_set
 #' @importFrom tsfeatures tsfeatures
-#' @importFrom reticulate source_python
+#' @importFrom reticulate source_python use_virtualenv
 NULL
