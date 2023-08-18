@@ -1,2 +1,48 @@
-# purloiner
-Time-series feature extraction module used in the CRAN package "theft".
+
+# purloiner <img src="man/figures/logo.png" align="right" width="120" />
+
+Calculate Time-Series Features from Feature Sets in R and Python
+
+## Installation
+
+You can install the development version of `purloiner` from GitHub using
+the following:
+
+``` r
+devtools::install_github("hendersontrent/purloiner")
+```
+
+## General purpose
+
+`purloiner` is a software package for R that facilitates user-friendly
+access calculate $>1200$ time-series features from a range of existing R
+and Python packages. The packages which `purloiner` ‘steals’ features
+from currently are:
+
+- [catch22](https://link.springer.com/article/10.1007/s10618-019-00647-x)
+  (R; [see `Rcatch22` for the native implementation on
+  CRAN](https://github.com/hendersontrent/Rcatch22))
+- [feasts](https://feasts.tidyverts.org) (R)
+- [tsfeatures](https://github.com/robjhyndman/tsfeatures) (R)
+- [Kats](https://facebookresearch.github.io/Kats/) (Python)
+- [tsfresh](https://tsfresh.com) (Python)
+- [TSFEL](https://tsfel.readthedocs.io/en/latest/) (Python)
+
+Please note that users should consider using the larger
+[`theft`](https://github.com/hendersontrent/theft/tree/main) (Tools for
+Handling Extraction of Features from Time series) package on CRAN for
+access to an entire workflow of functions for feature calculation,
+processing, visualisation, and statistical analysis. `purloiner` is the
+feature calculation module of `theft`.
+
+`Kats`, `tsfresh` and `TSFEL` are Python packages. `purloiner` has
+built-in functionality for helping you install these libraries—all you
+need to do is install Python 3.9 on your machine. If you wish to access
+the Python feature sets, please run `?install_python_pkgs` in R after
+downloading `purloiner` or consult the vignette in the package for more
+information. For a comprehensive comparison of `catch22`, `feasts`,
+`tsfeatures`, `Kats`, `tsfresh`, and `TSFEL` across a range of domains
+(including computation speed, within-set feature composition, and
+between-set feature correlations), please refer to the paper [An
+Empirical Evaluation of Time-Series Feature
+Sets](https://ieeexplore.ieee.org/document/9679937).
