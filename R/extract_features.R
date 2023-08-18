@@ -45,8 +45,8 @@ calc_catch22 <- function(data, catch24){
 #' Calculate basicproperties features on a dataframe
 #'
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr mutate group_by arrange summarise ungroup
-#' @importFrom basicproperties get_features
+#' @importFrom dplyr %>% mutate group_by arrange summarise ungroup
+#' @importFrom basicproperties get_properties
 #' @param data \code{data.frame} containing time-series data
 #' @return \code{data.frame} of features
 #' @author Trent Henderson
@@ -59,17 +59,19 @@ calc_basic <- function(data){
       tibble::as_tibble() %>%
       dplyr::group_by(.data$id, .data$group) %>%
       dplyr::arrange(.data$timepoint) %>%
-      dplyr::summarise(basicproperties::get_features(.data$values)) %>%
+      dplyr::summarise(basicproperties::get_properties(.data$values)) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(feature_set = "basicproperties")
+      dplyr::mutate(feature_set = "basicproperties") %>%
+      dplyr::rename(names = feature_name)
   } else{
     outData <- data %>%
       tibble::as_tibble() %>%
       dplyr::group_by(.data$id) %>%
       dplyr::arrange(.data$timepoint) %>%
-      dplyr::summarise(basicproperties::get_features(.data$values)) %>%
+      dplyr::summarise(basicproperties::get_properties(.data$values)) %>%
       dplyr::ungroup() %>%
-      dplyr::mutate(feature_set = "basicproperties")
+      dplyr::mutate(feature_set = "basicproperties") %>%
+      dplyr::rename(names = feature_name)
   }
 
   message("\nCalculations completed for basicproperties.")
@@ -82,7 +84,7 @@ calc_basic <- function(data){
 
 #' Calculate feasts features on a dataframe
 #'
-#' @importFrom dplyr mutate
+#' @importFrom dplyr %>% mutate
 #' @importFrom tidyr gather
 #' @importFrom tsibble as_tsibble
 #' @importFrom fabletools features feature_set
@@ -120,7 +122,7 @@ calc_feasts <- function(data){
 #' Helper function to calculate tsfeatures features on a dataframe
 #'
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr mutate group_by arrange summarise ungroup select
+#' @importFrom dplyr %>% mutate group_by arrange summarise ungroup select
 #' @importFrom tsfeatures tsfeatures
 #' @param data \code{data.frame} containing time-series data
 #' @return \code{data.frame} of features
@@ -199,7 +201,7 @@ calc_tsfeatures <- function(data){
 
 #' Calculate tsfresh features on a dataframe
 #'
-#' @importFrom dplyr select distinct mutate row_number rename left_join arrange group_by ungroup inner_join
+#' @importFrom dplyr %>% select distinct mutate row_number rename left_join arrange group_by ungroup inner_join
 #' @importFrom tidyr gather
 #' @importFrom reticulate source_python
 #' @param data \code{data.frame} containing time-series data
@@ -305,7 +307,7 @@ calc_tsfresh <- function(data, column_id = "id", column_sort = "timepoint", clea
 #' Calculate TSFEL features on a dataframe
 #'
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr group_by arrange summarise ungroup mutate
+#' @importFrom dplyr %>% group_by arrange summarise ungroup mutate
 #' @importFrom tidyr gather
 #' @importFrom reticulate source_python
 #' @param data \code{data.frame} containing time-series data
@@ -351,7 +353,7 @@ calc_tsfel <- function(data){
 #' Calculate Kats features on a dataframe
 #'
 #' @importFrom tibble as_tibble
-#' @importFrom dplyr group_by arrange summarise ungroup mutate left_join
+#' @importFrom dplyr %>% group_by arrange summarise ungroup mutate left_join
 #' @importFrom tidyr gather unnest_wider
 #' @importFrom reticulate source_python
 #' @param data \code{data.frame} containing time-series data
@@ -408,7 +410,7 @@ calc_kats <- function(data){
 #' Compute features on an input time series dataset
 #'
 #' @importFrom rlang .data
-#' @importFrom dplyr rename all_of select group_by summarise ungroup filter
+#' @importFrom dplyr %>% rename all_of select group_by summarise ungroup filter
 #' @param data \code{data.frame} with at least 4 columns: id variable, group variable, time variable, value variable
 #' @param id_var \code{character} specifying the ID variable to identify each time series. Defaults to \code{"id"}
 #' @param time_var \code{character} specifying the time index variable. Defaults to \code{"timepoint"}
