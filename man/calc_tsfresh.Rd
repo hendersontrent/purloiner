@@ -8,6 +8,12 @@ calc_tsfresh(data, column_id = "id", column_sort = "timepoint", cleanup)
 }
 \arguments{
 \item{data}{\code{data.frame} containing time-series data}
+
+\item{column_id}{\code{character} denoting the id column name. Defaults to \code{"id"}}
+
+\item{column_sort}{\code{character} denoting the timepoint column name. Defaults to \code{"timepoint"}}
+
+\item{cleanup}{\code{character} specifying whether to use the in-built \code{tsfresh} relevant feature filter or not. Defaults to \code{"No"}}
 }
 \value{
 \code{data.frame} of features

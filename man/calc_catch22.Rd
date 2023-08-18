@@ -8,6 +8,8 @@ calc_catch22(data, catch24)
 }
 \arguments{
 \item{data}{\code{data.frame} containing time-series data}
+
+\item{catch24}{\code{Boolean} specifying whether to compute \code{catch24} in addition to \code{catch22} if \code{catch22} is one of the feature sets selected. Defaults to \code{FALSE}}
 }
 \value{
 \code{data.frame} of features

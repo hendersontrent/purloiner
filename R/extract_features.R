@@ -10,6 +10,7 @@
 #' @importFrom dplyr mutate group_by arrange summarise ungroup
 #' @importFrom Rcatch22 catch22_all
 #' @param data \code{data.frame} containing time-series data
+#' @param catch24 \code{Boolean} specifying whether to compute \code{catch24} in addition to \code{catch22} if \code{catch22} is one of the feature sets selected. Defaults to \code{FALSE}
 #' @return \code{data.frame} of features
 #' @author Trent Henderson
 #'
@@ -62,7 +63,7 @@ calc_basic <- function(data){
       dplyr::summarise(basicproperties::get_properties(.data$values)) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(feature_set = "basicproperties") %>%
-      dplyr::rename(names = feature_name)
+      dplyr::rename(names = .data$feature_name)
   } else{
     outData <- data %>%
       tibble::as_tibble() %>%
@@ -71,7 +72,7 @@ calc_basic <- function(data){
       dplyr::summarise(basicproperties::get_properties(.data$values)) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(feature_set = "basicproperties") %>%
-      dplyr::rename(names = feature_name)
+      dplyr::rename(names = .data$feature_name)
   }
 
   message("\nCalculations completed for basicproperties.")
@@ -125,6 +126,8 @@ calc_feasts <- function(data){
 #' @importFrom dplyr %>% mutate group_by arrange summarise ungroup select
 #' @importFrom tsfeatures tsfeatures
 #' @param data \code{data.frame} containing time-series data
+#' @param grouped \code{Boolean} whether there is a group variable or not. Defaults to \code{FALSE}
+#' @param feats \code{character} vector denoting the categories of features to calculate
 #' @return \code{data.frame} of features
 #' @author Trent Henderson
 #'
@@ -205,6 +208,9 @@ calc_tsfeatures <- function(data){
 #' @importFrom tidyr gather
 #' @importFrom reticulate source_python
 #' @param data \code{data.frame} containing time-series data
+#' @param column_id \code{character} denoting the id column name. Defaults to \code{"id"}
+#' @param column_sort \code{character} denoting the timepoint column name. Defaults to \code{"timepoint"}
+#' @param cleanup \code{character} specifying whether to use the in-built \code{tsfresh} relevant feature filter or not. Defaults to \code{"No"}
 #' @return \code{data.frame} of features
 #' @author Trent Henderson
 #'
@@ -230,7 +236,7 @@ calc_tsfresh <- function(data, column_id = "id", column_sort = "timepoint", clea
       dplyr::mutate(id = dplyr::row_number())
 
     temp <- data %>%
-      dplyr::rename(old_id = id) %>%
+      dplyr::rename(old_id = .data$id) %>%
       dplyr::left_join(ids, by = c("old_id" = "old_id")) %>%
       dplyr::group_by(.data$id) %>%
       dplyr::arrange(.data$timepoint) %>%

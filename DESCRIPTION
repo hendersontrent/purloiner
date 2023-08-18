@@ -29,9 +29,9 @@ Imports:
     tsibble,
     fabletools,
     tsfeatures,
-    feasts,
     Rcatch22,
     reticulate,
+    basicproperties
 Suggests: 
     lifecycle,
     cachem,
