@@ -32,13 +32,13 @@ Please note that users should consider using the larger
 [`theft`](https://github.com/hendersontrent/theft/tree/main) (Tools for
 Handling Extraction of Features from Time series) package on CRAN for
 access to an entire workflow of functions for feature calculation,
-processing, visualisation, and statistical analysis. `purloiner` is the
-feature calculation module of `theft`.
+processing, visualisation, and statistical analysis. `purloiner` will
+become the feature calculation module of `theft` once it is on CRAN.
 
 `Kats`, `tsfresh` and `TSFEL` are Python packages. `purloiner` has
 built-in functionality for helping you install these libraries—all you
 need to do is install Python 3.9 on your machine. If you wish to access
-the Python feature sets, please run `?install_python_pkgs` in R after
+the Python feature sets, please run `?install_python_libs` in R after
 downloading `purloiner` or consult the vignette in the package for more
 information. For a comprehensive comparison of `catch22`, `feasts`,
 `tsfeatures`, `Kats`, `tsfresh`, and `TSFEL` across a range of domains
