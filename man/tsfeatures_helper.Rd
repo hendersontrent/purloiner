@@ -8,6 +8,10 @@ tsfeatures_helper(data, grouped = FALSE, feats)
 }
 \arguments{
 \item{data}{\code{data.frame} containing time-series data}
+
+\item{grouped}{\code{Boolean} whether there is a group variable or not. Defaults to \code{FALSE}}
+
+\item{feats}{\code{character} vector denoting the categories of features to calculate}
 }
 \value{
 \code{data.frame} of features
