@@ -24,6 +24,8 @@ from currently are:
   CRAN](https://github.com/hendersontrent/Rcatch22))
 - [feasts](https://feasts.tidyverts.org) (R)
 - [tsfeatures](https://github.com/robjhyndman/tsfeatures) (R)
+- [basicproperties](https://github.com/hendersontrent/basicproperties)
+  (R)
 - [Kats](https://facebookresearch.github.io/Kats/) (Python)
 - [tsfresh](https://tsfresh.com) (Python)
 - [TSFEL](https://tsfel.readthedocs.io/en/latest/) (Python)

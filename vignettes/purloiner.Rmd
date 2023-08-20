@@ -44,7 +44,7 @@ tmp$timepoint <- rep(seq.int(from = 1, to = 100, by = 1), times = 2)
 
 ### Calculating feature summary statistics
 
-The core function that automates the calculation of the feature statistics at once is `extract_features`. You can choose which subset of features to calculate with the `feature_set` argument. The choices are currently `"catch22"`, `"feasts"`, `"Kats"`, `"tsfeatures"`, `"tsfresh"`, and/or `"TSFEL"`.
+The core function that automates the calculation of the feature statistics at once is `extract_features`. You can choose which subset of features to calculate with the `feature_set` argument. The choices are currently `"catch22"`, `"feasts"`, `"basicproperties"`, `"Kats"`, `"tsfeatures"`, `"tsfresh"`, and/or `"TSFEL"`.
 
 Note that `Kats`, `tsfresh` and `TSFEL` are Python packages. The R package `reticulate` is used to call Python code that uses these packages and applies it within the broader *tidy* data philosophy embodied by `purloiner`. At present, depending on the input time-series, `purloiner` provides access to $>1200$ features.
 

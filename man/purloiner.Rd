@@ -3,6 +3,7 @@
 \docType{package}
 \name{purloiner}
 \alias{purloiner}
+\alias{purloiner-package}
 \title{Calculate Time-Series Features from Feature Sets in R and Python}
 \description{
 Calculate Time-Series Features from Feature Sets in R and Python

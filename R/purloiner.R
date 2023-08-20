@@ -1,5 +1,6 @@
 #'
 #' @docType package
+#' @aliases purloiner-package
 #' @name purloiner
 #' @title Calculate Time-Series Features from Feature Sets in R and Python
 #'
