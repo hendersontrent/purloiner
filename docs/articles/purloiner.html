@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">purloiner</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,7 @@
                         <h4 data-toc-skip class="author">Trent
 Henderson</h4>
             
-            <h4 data-toc-skip class="date">2023-08-19</h4>
+            <h4 data-toc-skip class="date">2023-08-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hendersontrent/purloiner/blob/HEAD/vignettes/purloiner.Rmd" class="external-link"><code>vignettes/purloiner.Rmd</code></a></small>
       <div class="d-none name"><code>purloiner.Rmd</code></div>
@@ -85,7 +85,7 @@ Henderson</h4>
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">purloiner</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://hendersontrent.github.io/purloiner/">purloiner</a></span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="purpose">Purpose<a class="anchor" aria-label="anchor" href="#purpose"></a>
 </h2>
@@ -117,8 +117,9 @@ and the other generated from an AR(1) process:</p>
 statistics at once is <code>extract_features</code>. You can choose
 which subset of features to calculate with the <code>feature_set</code>
 argument. The choices are currently <code>"catch22"</code>,
-<code>"feasts"</code>, <code>"Kats"</code>, <code>"tsfeatures"</code>,
-<code>"tsfresh"</code>, and/or <code>"TSFEL"</code>.</p>
+<code>"feasts"</code>, <code>"basicproperties"</code>,
+<code>"Kats"</code>, <code>"tsfeatures"</code>, <code>"tsfresh"</code>,
+and/or <code>"TSFEL"</code>.</p>
 <p>Note that <code>Kats</code>, <code>tsfresh</code> and
 <code>TSFEL</code> are Python packages. The R package
 <code>reticulate</code> is used to call Python code that uses these
@@ -186,93 +187,93 @@ sets:</p>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">feature_matrix</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt;    id group                                       names        values</span></span>
-<span><span class="co">#&gt; 1   1 Noise                          DN_HistogramMode_5  0.1185448643</span></span>
-<span><span class="co">#&gt; 2   1 Noise                         DN_HistogramMode_10 -0.0876710509</span></span>
-<span><span class="co">#&gt; 3   1 Noise                                   CO_f1ecac  1.5889890407</span></span>
-<span><span class="co">#&gt; 4   1 Noise                              CO_FirstMin_ac  1.0000000000</span></span>
-<span><span class="co">#&gt; 5   1 Noise                    CO_HistogramAMI_even_2_5  0.0481833170</span></span>
-<span><span class="co">#&gt; 6   1 Noise                               CO_trev_1_num  0.5942656878</span></span>
-<span><span class="co">#&gt; 7   1 Noise                        MD_hrv_classic_pnn40  0.9595959596</span></span>
-<span><span class="co">#&gt; 8   1 Noise            SB_BinaryStats_mean_longstretch1 10.0000000000</span></span>
-<span><span class="co">#&gt; 9   1 Noise          SB_TransitionMatrix_3ac_sumdiagcov  0.0004081216</span></span>
-<span><span class="co">#&gt; 10  1 Noise                   PD_PeriodicityWang_th0_01  3.0000000000</span></span>
-<span><span class="co">#&gt; 11  1 Noise        CO_Embed2_Dist_tau_d_expfit_meandiff  0.0577158860</span></span>
-<span><span class="co">#&gt; 12  1 Noise     IN_AutoMutualInfoStats_40_gaussian_fmmi  1.0000000000</span></span>
-<span><span class="co">#&gt; 13  1 Noise              FC_LocalSimple_mean1_tauresrat  1.0000000000</span></span>
-<span><span class="co">#&gt; 14  1 Noise               DN_OutlierInclude_p_001_mdrmd  0.0200000000</span></span>
-<span><span class="co">#&gt; 15  1 Noise               DN_OutlierInclude_n_001_mdrmd -0.1800000000</span></span>
-<span><span class="co">#&gt; 16  1 Noise            SP_Summaries_welch_rect_area_5_1  0.2057345829</span></span>
-<span><span class="co">#&gt; 17  1 Noise            SB_BinaryStats_diff_longstretch0  4.0000000000</span></span>
-<span><span class="co">#&gt; 18  1 Noise                   SB_MotifThree_quantile_hh  2.1934541580</span></span>
-<span><span class="co">#&gt; 19  1 Noise SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.8000000000</span></span>
-<span><span class="co">#&gt; 20  1 Noise      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.4857142857</span></span>
-<span><span class="co">#&gt; 21  1 Noise            SP_Summaries_welch_rect_centroid  1.6689710972</span></span>
-<span><span class="co">#&gt; 22  1 Noise                 FC_LocalSimple_mean3_stderr  1.1669650277</span></span>
-<span><span class="co">#&gt; 23  2 AR(1)                          DN_HistogramMode_5  0.1330996574</span></span>
-<span><span class="co">#&gt; 24  2 AR(1)                         DN_HistogramMode_10 -0.0864255986</span></span>
-<span><span class="co">#&gt; 25  2 AR(1)                                   CO_f1ecac  4.8971274957</span></span>
-<span><span class="co">#&gt; 26  2 AR(1)                              CO_FirstMin_ac 14.0000000000</span></span>
-<span><span class="co">#&gt; 27  2 AR(1)                    CO_HistogramAMI_even_2_5  0.3134931256</span></span>
-<span><span class="co">#&gt; 28  2 AR(1)                               CO_trev_1_num -0.0579029415</span></span>
-<span><span class="co">#&gt; 29  2 AR(1)                        MD_hrv_classic_pnn40  0.9090909091</span></span>
-<span><span class="co">#&gt; 30  2 AR(1)            SB_BinaryStats_mean_longstretch1 14.0000000000</span></span>
-<span><span class="co">#&gt; 31  2 AR(1)          SB_TransitionMatrix_3ac_sumdiagcov  0.0303030303</span></span>
-<span><span class="co">#&gt; 32  2 AR(1)                   PD_PeriodicityWang_th0_01 21.0000000000</span></span>
-<span><span class="co">#&gt; 33  2 AR(1)        CO_Embed2_Dist_tau_d_expfit_meandiff  0.2508819219</span></span>
-<span><span class="co">#&gt; 34  2 AR(1)     IN_AutoMutualInfoStats_40_gaussian_fmmi  8.0000000000</span></span>
-<span><span class="co">#&gt; 35  2 AR(1)              FC_LocalSimple_mean1_tauresrat  0.1111111111</span></span>
-<span><span class="co">#&gt; 36  2 AR(1)               DN_OutlierInclude_p_001_mdrmd  0.0800000000</span></span>
-<span><span class="co">#&gt; 37  2 AR(1)               DN_OutlierInclude_n_001_mdrmd -0.1400000000</span></span>
-<span><span class="co">#&gt; 38  2 AR(1)            SP_Summaries_welch_rect_area_5_1  0.7468438145</span></span>
-<span><span class="co">#&gt; 39  2 AR(1)            SB_BinaryStats_diff_longstretch0  5.0000000000</span></span>
-<span><span class="co">#&gt; 40  2 AR(1)                   SB_MotifThree_quantile_hh  1.8281732424</span></span>
-<span><span class="co">#&gt; 41  2 AR(1) SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.7714285714</span></span>
-<span><span class="co">#&gt; 42  2 AR(1)      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.4000000000</span></span>
-<span><span class="co">#&gt; 43  2 AR(1)            SP_Summaries_welch_rect_centroid  0.2945243113</span></span>
-<span><span class="co">#&gt; 44  2 AR(1)                 FC_LocalSimple_mean3_stderr  0.7706485218</span></span>
-<span><span class="co">#&gt; 45  1 Noise                                        mean -0.0105752116</span></span>
-<span><span class="co">#&gt; 46  1 Noise                                      median -0.1069643548</span></span>
-<span><span class="co">#&gt; 47  1 Noise                                        mode            NA</span></span>
-<span><span class="co">#&gt; 48  1 Noise                                         min -1.9158578874</span></span>
-<span><span class="co">#&gt; 49  1 Noise                                         max  2.1271213518</span></span>
-<span><span class="co">#&gt; 50  1 Noise                                    skewness  0.1626326062</span></span>
-<span><span class="co">#&gt; 51  1 Noise                                    kurtosis -0.5311808904</span></span>
-<span><span class="co">#&gt; 52  1 Noise                                       acf_1 -0.0732297465</span></span>
-<span><span class="co">#&gt; 53  1 Noise                                       acf_2  0.0184392890</span></span>
-<span><span class="co">#&gt; 54  1 Noise                                       acf_3  0.0217589117</span></span>
-<span><span class="co">#&gt; 55  1 Noise                                       acf_4  0.1467421889</span></span>
-<span><span class="co">#&gt; 56  1 Noise                                       acf_5 -0.0050884519</span></span>
-<span><span class="co">#&gt; 57  1 Noise                                         IQR  1.2716615440</span></span>
-<span><span class="co">#&gt; 58  1 Noise                                          sd  0.9802781800</span></span>
-<span><span class="co">#&gt; 59  1 Noise                                linear_trend  0.0029287813</span></span>
-<span><span class="co">#&gt; 60  1 Noise                           spectral_centroid 50.9387752395</span></span>
-<span><span class="co">#&gt; 61  1 Noise                              prop_above_3SD  0.0000000000</span></span>
-<span><span class="co">#&gt; 62  1 Noise                                  quantile_5 -1.7000417971</span></span>
-<span><span class="co">#&gt; 63  1 Noise                                 quantile_25 -0.6783219807</span></span>
-<span><span class="co">#&gt; 64  1 Noise                                 quantile_75  0.5933395632</span></span>
-<span><span class="co">#&gt; 65  1 Noise                                 quantile_95  1.7801553887</span></span>
-<span><span class="co">#&gt; 66  2 AR(1)                                        mean  0.7264989813</span></span>
-<span><span class="co">#&gt; 67  2 AR(1)                                      median  0.7362563376</span></span>
-<span><span class="co">#&gt; 68  2 AR(1)                                        mode            NA</span></span>
-<span><span class="co">#&gt; 69  2 AR(1)                                         min -2.6537918482</span></span>
-<span><span class="co">#&gt; 70  2 AR(1)                                         max  4.5431449917</span></span>
-<span><span class="co">#&gt; 71  2 AR(1)                                    skewness  0.0226007329</span></span>
-<span><span class="co">#&gt; 72  2 AR(1)                                    kurtosis -0.5678463771</span></span>
-<span><span class="co">#&gt; 73  2 AR(1)                                       acf_1  0.7646247204</span></span>
-<span><span class="co">#&gt; 74  2 AR(1)                                       acf_2  0.5902018766</span></span>
-<span><span class="co">#&gt; 75  2 AR(1)                                       acf_3  0.4803572151</span></span>
-<span><span class="co">#&gt; 76  2 AR(1)                                       acf_4  0.3549817535</span></span>
-<span><span class="co">#&gt; 77  2 AR(1)                                       acf_5  0.3033230457</span></span>
-<span><span class="co">#&gt; 78  2 AR(1)                                         IQR  2.1480537616</span></span>
-<span><span class="co">#&gt; 79  2 AR(1)                                          sd  1.6392047481</span></span>
-<span><span class="co">#&gt; 80  2 AR(1)                                linear_trend  0.0011069924</span></span>
-<span><span class="co">#&gt; 81  2 AR(1)                           spectral_centroid 48.0727277052</span></span>
-<span><span class="co">#&gt; 82  2 AR(1)                              prop_above_3SD  0.0000000000</span></span>
-<span><span class="co">#&gt; 83  2 AR(1)                                  quantile_5 -2.0737351946</span></span>
-<span><span class="co">#&gt; 84  2 AR(1)                                 quantile_25 -0.4063606410</span></span>
-<span><span class="co">#&gt; 85  2 AR(1)                                 quantile_75  1.7416931205</span></span>
-<span><span class="co">#&gt; 86  2 AR(1)                                 quantile_95  3.3552399633</span></span>
+<span><span class="co">#&gt;    id group                                       names       values</span></span>
+<span><span class="co">#&gt; 1   1 Noise                          DN_HistogramMode_5  0.564270057</span></span>
+<span><span class="co">#&gt; 2   1 Noise                         DN_HistogramMode_10  0.326017206</span></span>
+<span><span class="co">#&gt; 3   1 Noise                                   CO_f1ecac  1.582418421</span></span>
+<span><span class="co">#&gt; 4   1 Noise                              CO_FirstMin_ac  1.000000000</span></span>
+<span><span class="co">#&gt; 5   1 Noise                    CO_HistogramAMI_even_2_5  0.061646508</span></span>
+<span><span class="co">#&gt; 6   1 Noise                               CO_trev_1_num -0.840203479</span></span>
+<span><span class="co">#&gt; 7   1 Noise                        MD_hrv_classic_pnn40  0.989898990</span></span>
+<span><span class="co">#&gt; 8   1 Noise            SB_BinaryStats_mean_longstretch1 12.000000000</span></span>
+<span><span class="co">#&gt; 9   1 Noise          SB_TransitionMatrix_3ac_sumdiagcov  0.003264973</span></span>
+<span><span class="co">#&gt; 10  1 Noise                   PD_PeriodicityWang_th0_01  4.000000000</span></span>
+<span><span class="co">#&gt; 11  1 Noise        CO_Embed2_Dist_tau_d_expfit_meandiff  0.056745813</span></span>
+<span><span class="co">#&gt; 12  1 Noise     IN_AutoMutualInfoStats_40_gaussian_fmmi  3.000000000</span></span>
+<span><span class="co">#&gt; 13  1 Noise              FC_LocalSimple_mean1_tauresrat  1.000000000</span></span>
+<span><span class="co">#&gt; 14  1 Noise               DN_OutlierInclude_p_001_mdrmd -0.180000000</span></span>
+<span><span class="co">#&gt; 15  1 Noise               DN_OutlierInclude_n_001_mdrmd -0.180000000</span></span>
+<span><span class="co">#&gt; 16  1 Noise            SP_Summaries_welch_rect_area_5_1  0.208172522</span></span>
+<span><span class="co">#&gt; 17  1 Noise            SB_BinaryStats_diff_longstretch0  4.000000000</span></span>
+<span><span class="co">#&gt; 18  1 Noise                   SB_MotifThree_quantile_hh  2.167810697</span></span>
+<span><span class="co">#&gt; 19  1 Noise SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.742857143</span></span>
+<span><span class="co">#&gt; 20  1 Noise      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.771428571</span></span>
+<span><span class="co">#&gt; 21  1 Noise            SP_Summaries_welch_rect_centroid  1.816233253</span></span>
+<span><span class="co">#&gt; 22  1 Noise                 FC_LocalSimple_mean3_stderr  1.081825376</span></span>
+<span><span class="co">#&gt; 23  2 AR(1)                          DN_HistogramMode_5 -0.107759032</span></span>
+<span><span class="co">#&gt; 24  2 AR(1)                         DN_HistogramMode_10 -0.340106829</span></span>
+<span><span class="co">#&gt; 25  2 AR(1)                                   CO_f1ecac  8.604740535</span></span>
+<span><span class="co">#&gt; 26  2 AR(1)                              CO_FirstMin_ac 20.000000000</span></span>
+<span><span class="co">#&gt; 27  2 AR(1)                    CO_HistogramAMI_even_2_5  0.324700551</span></span>
+<span><span class="co">#&gt; 28  2 AR(1)                               CO_trev_1_num  0.045397582</span></span>
+<span><span class="co">#&gt; 29  2 AR(1)                        MD_hrv_classic_pnn40  0.979797980</span></span>
+<span><span class="co">#&gt; 30  2 AR(1)            SB_BinaryStats_mean_longstretch1 23.000000000</span></span>
+<span><span class="co">#&gt; 31  2 AR(1)          SB_TransitionMatrix_3ac_sumdiagcov  0.074074074</span></span>
+<span><span class="co">#&gt; 32  2 AR(1)                   PD_PeriodicityWang_th0_01 24.000000000</span></span>
+<span><span class="co">#&gt; 33  2 AR(1)        CO_Embed2_Dist_tau_d_expfit_meandiff  0.300822829</span></span>
+<span><span class="co">#&gt; 34  2 AR(1)     IN_AutoMutualInfoStats_40_gaussian_fmmi 13.000000000</span></span>
+<span><span class="co">#&gt; 35  2 AR(1)              FC_LocalSimple_mean1_tauresrat  0.066666667</span></span>
+<span><span class="co">#&gt; 36  2 AR(1)               DN_OutlierInclude_p_001_mdrmd  0.020000000</span></span>
+<span><span class="co">#&gt; 37  2 AR(1)               DN_OutlierInclude_n_001_mdrmd -0.320000000</span></span>
+<span><span class="co">#&gt; 38  2 AR(1)            SP_Summaries_welch_rect_area_5_1  0.829816630</span></span>
+<span><span class="co">#&gt; 39  2 AR(1)            SB_BinaryStats_diff_longstretch0  6.000000000</span></span>
+<span><span class="co">#&gt; 40  2 AR(1)                   SB_MotifThree_quantile_hh  1.877152950</span></span>
+<span><span class="co">#&gt; 41  2 AR(1) SC_FluctAnal_2_rsrangefit_50_1_logi_prop_r1  0.828571429</span></span>
+<span><span class="co">#&gt; 42  2 AR(1)      SC_FluctAnal_2_dfa_50_1_2_logi_prop_r1  0.828571429</span></span>
+<span><span class="co">#&gt; 43  2 AR(1)            SP_Summaries_welch_rect_centroid  0.147262156</span></span>
+<span><span class="co">#&gt; 44  2 AR(1)                 FC_LocalSimple_mean3_stderr  0.652738850</span></span>
+<span><span class="co">#&gt; 45  1 Noise                                        mean  0.057019875</span></span>
+<span><span class="co">#&gt; 46  1 Noise                                      median  0.138297004</span></span>
+<span><span class="co">#&gt; 47  1 Noise                                        mode           NA</span></span>
+<span><span class="co">#&gt; 48  1 Noise                                         min -2.686717941</span></span>
+<span><span class="co">#&gt; 49  1 Noise                                         max  2.030999140</span></span>
+<span><span class="co">#&gt; 50  1 Noise                                    skewness -0.322325032</span></span>
+<span><span class="co">#&gt; 51  1 Noise                                    kurtosis -0.143964252</span></span>
+<span><span class="co">#&gt; 52  1 Noise                                       acf_1 -0.085337510</span></span>
+<span><span class="co">#&gt; 53  1 Noise                                       acf_2  0.104021241</span></span>
+<span><span class="co">#&gt; 54  1 Noise                                       acf_3  0.129615013</span></span>
+<span><span class="co">#&gt; 55  1 Noise                                       acf_4 -0.053163576</span></span>
+<span><span class="co">#&gt; 56  1 Noise                                       acf_5  0.101242945</span></span>
+<span><span class="co">#&gt; 57  1 Noise                                         IQR  1.411951714</span></span>
+<span><span class="co">#&gt; 58  1 Noise                                          sd  0.990065189</span></span>
+<span><span class="co">#&gt; 59  1 Noise                                linear_trend -0.002231141</span></span>
+<span><span class="co">#&gt; 60  1 Noise                           spectral_centroid 50.677171030</span></span>
+<span><span class="co">#&gt; 61  1 Noise                              prop_above_3SD  0.000000000</span></span>
+<span><span class="co">#&gt; 62  1 Noise                                  quantile_5 -1.402631683</span></span>
+<span><span class="co">#&gt; 63  1 Noise                                 quantile_25 -0.590762085</span></span>
+<span><span class="co">#&gt; 64  1 Noise                                 quantile_75  0.821189629</span></span>
+<span><span class="co">#&gt; 65  1 Noise                                 quantile_95  1.577188775</span></span>
+<span><span class="co">#&gt; 66  2 AR(1)                                        mean -0.086925048</span></span>
+<span><span class="co">#&gt; 67  2 AR(1)                                      median -0.332098128</span></span>
+<span><span class="co">#&gt; 68  2 AR(1)                                        mode           NA</span></span>
+<span><span class="co">#&gt; 69  2 AR(1)                                         min -4.961376194</span></span>
+<span><span class="co">#&gt; 70  2 AR(1)                                         max  4.355428253</span></span>
+<span><span class="co">#&gt; 71  2 AR(1)                                    skewness  0.271233335</span></span>
+<span><span class="co">#&gt; 72  2 AR(1)                                    kurtosis -0.276803613</span></span>
+<span><span class="co">#&gt; 73  2 AR(1)                                       acf_1  0.832395247</span></span>
+<span><span class="co">#&gt; 74  2 AR(1)                                       acf_2  0.727825304</span></span>
+<span><span class="co">#&gt; 75  2 AR(1)                                       acf_3  0.607157379</span></span>
+<span><span class="co">#&gt; 76  2 AR(1)                                       acf_4  0.509793158</span></span>
+<span><span class="co">#&gt; 77  2 AR(1)                                       acf_5  0.433327099</span></span>
+<span><span class="co">#&gt; 78  2 AR(1)                                         IQR  2.696561201</span></span>
+<span><span class="co">#&gt; 79  2 AR(1)                                          sd  2.004926356</span></span>
+<span><span class="co">#&gt; 80  2 AR(1)                                linear_trend  0.003144676</span></span>
+<span><span class="co">#&gt; 81  2 AR(1)                           spectral_centroid 50.666576668</span></span>
+<span><span class="co">#&gt; 82  2 AR(1)                              prop_above_3SD  0.000000000</span></span>
+<span><span class="co">#&gt; 83  2 AR(1)                                  quantile_5 -3.341832889</span></span>
+<span><span class="co">#&gt; 84  2 AR(1)                                 quantile_25 -1.417496413</span></span>
+<span><span class="co">#&gt; 85  2 AR(1)                                 quantile_75  1.279064788</span></span>
+<span><span class="co">#&gt; 86  2 AR(1)                                 quantile_95  3.720137904</span></span>
 <span><span class="co">#&gt;        feature_set</span></span>
 <span><span class="co">#&gt; 1          catch22</span></span>
 <span><span class="co">#&gt; 2          catch22</span></span>
