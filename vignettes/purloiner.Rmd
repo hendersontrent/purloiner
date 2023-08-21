@@ -69,7 +69,19 @@ However, you do not necessarily have to use this convenience function. If you ha
 
 #### Calculating features
 
-You are then ready to use the rest of the package's functionality, beginning with the extraction of time-series features. Here is an example with the `catch22` and `basicproperties` sets:
+You are then ready to use the rest of the package's functionality, beginning with the extraction of time-series features. `extract_features` takes the following arguments: 
+
+* `data`---data.frame with at least 3 columns: id variable, time variable, value variable
+* `id_var`--- character specifying the ID variable to identify each time series. Defaults to `"id"`
+* `time_var`---character specifying the time index variable. Defaults to `"timepoint"`
+* `values_var`---character specifying the values variable. Defaults to `"values"`
+* `group_var`---character specifying the grouping variable that each unique series sits under (if one exists). Defaults to `NULL`
+* `feature_set`---character or vector of characters denoting the set of time-series features to calculate. Defaults to `"catch22"`
+* `catch24`---Boolean specifying whether to compute `catch24` in addition to `catch22` if `catch22` is one of the feature sets selected. Defaults to `FALSE`
+* `tsfresh_cleanup`---Boolean specifying whether to use the in-built `tsfresh` relevant feature filter or not. Defaults to `FALSE`
+* `seed`---integer denoting a fixed number for R's random number generator to ensure reproducibility. Defaults to `123`
+
+Here is an example with the `catch22` and `basicproperties` sets:
 
 ```{r, message = FALSE, warning = FALSE}
 feature_matrix <- extract_features(data = tmp,
