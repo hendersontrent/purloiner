@@ -417,7 +417,7 @@ calc_kats <- function(data){
 #'
 #' @importFrom rlang .data
 #' @importFrom dplyr %>% rename all_of select group_by summarise ungroup filter
-#' @param data \code{data.frame} with at least 4 columns: id variable, group variable, time variable, value variable
+#' @param data \code{data.frame} with at least 3 columns: id variable, time variable, value variable. Can also have a fourth column for a group variable which is especially useful for time-series classification applications
 #' @param id_var \code{character} specifying the ID variable to identify each time series. Defaults to \code{"id"}
 #' @param time_var \code{character} specifying the time index variable. Defaults to \code{"timepoint"}
 #' @param values_var \code{character} specifying the values variable. Defaults to \code{"values"}

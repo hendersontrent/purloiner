@@ -18,7 +18,7 @@ extract_features(
 )
 }
 \arguments{
-\item{data}{\code{data.frame} with at least 4 columns: id variable, group variable, time variable, value variable}
+\item{data}{\code{data.frame} with at least 3 columns: id variable, time variable, value variable. Can also have a fourth column for a group variable which is especially useful for time-series classification applications}
 
 \item{id_var}{\code{character} specifying the ID variable to identify each time series. Defaults to \code{"id"}}
 
